@@ -15,7 +15,7 @@ jobs:
   build: # make sure build/ci work properly
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - run: |
           npm install
       - run: |
@@ -40,7 +40,7 @@ jobs:
           - ~
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ./
         with:
           version: ${{ matrix.version }}
@@ -59,13 +59,13 @@ jobs:
           - macos-11
           - macos-10.15
         kubectl-version:
-          - v1.21.0
-          - 1.21.0
+          - v1.25.9
+          - 1.25.9
           - latest
           - ~
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ./
         with:
           version: latest
