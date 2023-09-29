@@ -1,0 +1,2 @@
+# used by "asdf" to pick the version to use in this project
+nodejs 18.17.0
