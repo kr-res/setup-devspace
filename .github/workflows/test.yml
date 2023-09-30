@@ -62,8 +62,8 @@ jobs:
           - macos-11
           - macos-10.15
         kubectl-version:
-          - v1.25.9
-          - 1.25.9
+          - v1.21.0
+          - 1.21.0
           - latest
           - ~
     runs-on: ${{ matrix.os }}
