@@ -3,7 +3,8 @@ import {getExecOutput} from '@actions/exec'
 import {which} from '@actions/io'
 import {cacheFile, downloadTool, find} from '@actions/tool-cache'
 import {chmodSync} from 'fs'
-import fetch from 'node-fetch'
+// import fetch from 'node-fetch'
+import axios from 'axios'
 import {join} from 'path'
 
 import {
@@ -44,10 +45,11 @@ export async function binaryUrl(
 }
 
 export async function getLatestVersion(): Promise<string> {
-  const response = await fetch(
+  // const response = await fetch(
+  const response = await axios.get(
     'https://storage.googleapis.com/kubernetes-release/release/stable.txt'
   )
-  return response.text()
+  return response.data()
 }
 
 async function getInstalledVersion(): Promise<string> {

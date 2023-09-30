@@ -1,7 +1,8 @@
 import * as core from '@actions/core'
 import * as tc from '@actions/tool-cache'
 import * as fs from 'fs'
-import fetch from 'node-fetch'
+// import fetch from 'node-fetch'
+import axios from 'axios'
 import {join} from 'path'
 
 import {
@@ -44,13 +45,11 @@ export async function binaryUrl(
 }
 
 export async function getLatestVersion(): Promise<string> {
-  const response = await fetch(
-    'https://github.com/devspace-sh/devspace/releases/latest',
-    {
-      redirect: 'manual'
-    }
+  // const response = await fetch(
+  const response = await axios.get(
+    'https://github.com/devspace-sh/devspace/releases/latest'
   )
-  const redirectUrl = response.headers.get('location')
+  const redirectUrl = response.headers['location']
   if (redirectUrl == null) {
     throw new Error('Error fetching latest version')
   }
